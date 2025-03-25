@@ -22,13 +22,13 @@ gx = np.array([[-1, 0, 1],
                [-1, 0, 1]], dtype=np.float32)
 gy = gx.T # swaps rows and columns of gx
 
-# Function to compute the x and y gradients using cv2.filter2D
+# Function to compute the x and y gradients using
 def compute_gradients(channel):
     grad_x = cv2.filter2D(channel.astype(np.float32), -1, gx)
     grad_y = cv2.filter2D(channel.astype(np.float32), -1, gy)
     return grad_x, grad_y
 
-# Split the image into B, G, R channels (note: OpenCV uses BGR order)
+# Split the image into B, G, R channels (apparently OpenCV uses BGR order)
 B, G, R = cv2.split(img)
 
 # Compute gradients for each channel
@@ -36,7 +36,7 @@ Rx, Ry = compute_gradients(R)
 Gx, Gy = compute_gradients(G)
 Bx, By = compute_gradients(B)  # This will be zero everywhere
 
-# Sum the gradients of the three channels as described in the problem
+# Sum of the gradients of the three channels
 grad_x_total = Rx + Gx + Bx
 grad_y_total = Ry + Gy + By
 

@@ -34,6 +34,7 @@ Figure \ref{fig:results} shows the computed gradients for the synthetic image. T
 \end{figure}
 
 \section*{Conclusion}
+We can see there is no broder detection; the images appear as one solid color.
 This happens because when computing the gradient across channels, the strong increase in one channel can be canceled by a strong decrease in another. In this case, the red channel transitions from strong to zero, while the green channel transitions from zero to strong. When summed, these opposing gradients effectively nullify each other, resulting in a misleading overall gradient calculation.
 
 This demonstrates the issue with summing individual color gradients. The results show that edges can be present in a color image while the summed gradient remains zero. Therefore we need an alternative gradient computation methods in color image processing.

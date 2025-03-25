@@ -2,6 +2,9 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
+
+################### EXERCISE 1 ###################
+
 # Create a synthetic color image with size 100x200 pixels
 height, width = 100, 200
 # Initialize an image with 3 channels (B, G, R) set to zero
@@ -72,4 +75,37 @@ plt.axis('off')
 cv2.imwrite(r"Images/gradient_magnitude.png", grad_magnitude)
 
 plt.tight_layout()
+plt.show()
+
+
+########################## EXERCISE 2 ##########################
+
+def otsu_thresholding(image):
+    # Step 1: Convert the image to grayscale if it's not already
+    if len(image.shape) == 3:  # Check if the image is colored (RGB)
+        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        gray_image = image
+    
+    # Step 2: Apply Otsu's Thresholding
+    # Otsu's method automatically calculates the optimal threshold
+    _, binary_image = cv2.threshold(gray_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    
+    return binary_image
+
+# Load the image (houses.pgm)
+image = cv2.imread('Assignment4/houses.pgm')
+
+# Step 1: Apply Otsu's method to find the optimal threshold
+binary_image = otsu_thresholding(image)
+
+# Step 2: Display the original and binary image
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  # Convert to RGB for matplotlib display
+plt.title('Original Image')
+plt.subplot(1, 2, 2)
+plt.imshow(binary_image, cmap='gray')
+plt.title('Otsu Thresholding')
+cv2.imwrite(r"Images/otsu_thresholding.png", binary_image)
 plt.show()

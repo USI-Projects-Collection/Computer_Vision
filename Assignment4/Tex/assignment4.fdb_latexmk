@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1742928688.50795 "/Users/paolodeidda/Documents/UNI/Master/sem2/Computer Vision & Pattern Recognition/Computer_Vision/Assignment4/Tex/assignment4.tex" "assignment4.pdf" "assignment4" 1742928688.97749 0
+["pdflatex"] 1742997463.18042 "/Users/paolodeidda/Documents/UNI/Master/sem2/Computer Vision & Pattern Recognition/Computer_Vision/Assignment4/Tex/assignment4.tex" "assignment4.pdf" "assignment4" 1742997463.63942 0
   "../Images/gradient_magnitude.png" 1742918632.08608 227 1451eea132d68f5c31459ebea49d3543 ""
   "../Images/gradient_x.png" 1742918632.08 227 1451eea132d68f5c31459ebea49d3543 ""
   "../Images/gradient_y.png" 1742918632.08321 227 1451eea132d68f5c31459ebea49d3543 ""
   "../Images/synthetic_image.png" 1742918632.07647 529 23dc18c6c239949ddb63d4ff689a4109 ""
-  "../source.py" 1742928098.05931 2373 7fff33564870c41021c6bba5b2b4f9ab ""
+  "../source.py" 1742997149.8792 3544 cd0601e05659430dd1bb5ee78e1e08c6 ""
   "/Users/paolodeidda/Documents/UNI/Master/sem2/Computer Vision & Pattern Recognition/Computer_Vision/Assignment4/Tex/assignment4.tex" 1742928470.63507 951 161940bc6c482bff8c48e5cabc062b83 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -125,9 +125,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1728316090.90627 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1728315754 8221418 945d7397e00084dab441d5a55918a929 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "assignment4.aux" 1742928688.93265 567 6ed7d910f1ba4063df54f46d8f110e4c "pdflatex"
+  "assignment4.aux" 1742997463.59628 567 6ed7d910f1ba4063df54f46d8f110e4c "pdflatex"
   "assignment4.tex" 1742928470.63507 951 161940bc6c482bff8c48e5cabc062b83 ""
-  "ex1.tex" 1742928688.34974 2256 ff8600bebf3090c6191db6fb4601bd7d ""
+  "ex1.tex" 1742997463.01484 2256 ff8600bebf3090c6191db6fb4601bd7d ""
   "ex2.tex" 1742917916.89017 0 d41d8cd98f00b204e9800998ecf8427e ""
   (generated)
   "assignment4.aux"

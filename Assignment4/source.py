@@ -80,21 +80,22 @@ plt.show()
 
 ########################## EXERCISE 2 ##########################
 
+
 def otsu_thresholding(image):
     # Step 1: Convert the image to grayscale if it's not already
     if len(image.shape) == 3:  # Check if the image is colored (RGB)
         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     else:
         gray_image = image
-    
+
     # Step 2: Apply Otsu's Thresholding
     # Otsu's method automatically calculates the optimal threshold
     _, binary_image = cv2.threshold(gray_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    
+
     return binary_image
 
 # Load the image (houses.pgm)
-image = cv2.imread('Assignment4/houses.pgm')
+image = cv2.imread('houses.pgm')
 
 # Step 1: Apply Otsu's method to find the optimal threshold
 binary_image = otsu_thresholding(image)
@@ -107,5 +108,5 @@ plt.title('Original Image')
 plt.subplot(1, 2, 2)
 plt.imshow(binary_image, cmap='gray')
 plt.title('Otsu Thresholding')
-cv2.imwrite(r"Images/otsu_thresholding.png", binary_image)
+plt.savefig('otsu_thresholding.png')
 plt.show()

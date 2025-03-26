@@ -51,31 +51,31 @@ plt.figure(figsize=(12, 8))
 
 plt.subplot(2, 2, 1)
 # Convert BGR to RGB for correct display in matplotlib
-plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+# plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.title("Synthetic Color Image")
 plt.axis('off')
 cv2.imwrite(r"Images/synthetic_image.png", img)
 
 plt.subplot(2, 2, 2)
-plt.imshow(grad_x_total, cmap='gray')
+# plt.imshow(grad_x_total, cmap='gray')
 plt.title("Summed Gradient X")
 plt.axis('off')
 cv2.imwrite(r"Images/gradient_x.png", grad_x_total)
 
 plt.subplot(2, 2, 3)
-plt.imshow(grad_y_total, cmap='gray')
+# plt.imshow(grad_y_total, cmap='gray')
 plt.title("Summed Gradient Y")
 plt.axis('off')
 cv2.imwrite(r"Images/gradient_y.png", grad_y_total)
 
 plt.subplot(2, 2, 4)
-plt.imshow(grad_magnitude, cmap='gray')
+# plt.imshow(grad_magnitude, cmap='gray')
 plt.title("Summed Gradient Magnitude")
 plt.axis('off')
 cv2.imwrite(r"Images/gradient_magnitude.png", grad_magnitude)
 
 plt.tight_layout()
-plt.show()
+# plt.show()
 
 
 ########################## EXERCISE 2 ##########################
@@ -108,5 +108,5 @@ plt.title('Original Image')
 plt.subplot(1, 2, 2)
 plt.imshow(binary_image, cmap='gray')
 plt.title('Otsu Thresholding')
-plt.savefig('otsu_thresholding.png')
-plt.show()
+plt.savefig('Images/otsu_thresholding.png')
+# plt.show()

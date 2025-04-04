@@ -1,37 +1,12 @@
-def plot_lines_and_intersections(lines, concurrent, inter_points, title=""):
-    """
-    Plot the three lines given by their homogeneous coordinates and
-    plot the pairwise intersection points.
-    """
-    x_vals = np.linspace(-10, 10, 400)
-    plt.figure(figsize=(8, 8))
-    colors = ['r', 'g', 'b']
-    
-    # Plot each line
-    for i, line in enumerate(lines):
-        a, b, c = line
-        # if b is not zero, solve for y = (-a*x - c) / b
-        if np.abs(b) > 1e-6:
-            y_vals = (-a * x_vals - c) / b
-            plt.plot(x_vals, y_vals, colors[i], label=f'Line {i+1}: {line}')
-        elif np.abs(a) > 1e-6:
-            # vertical line: x = -c/a
-            x_line = -c / a if np.abs(a) > 1e-6 else np.inf  # Avoid division by zero
-            if np.isfinite(x_line):
-                plt.axvline(x=x_line, color=colors[i], label=f'Line {i+1}: {line}')
-    
-    # Plot all pairwise intersection points
-    for p in inter_points:
-        if np.abs(p[2]) > 1e-6:  # Ensure valid point before plotting
-            p_norm = normalize_point(p)
-            plt.plot(p_norm[0], p_norm[1], 'ko', markersize=8)
-    
-    # Set title and legend
-    plt.title(title + (" - Lines are concurrent" if concurrent else " - Lines are NOT concurrent"))
-    plt.xlabel("x")
-    plt.ylabel("y")
-    plt.legend()
-    plt.grid(True)
-    plt.xlim(-10, 10)
-    plt.ylim(-10, 10)
-    plt.savefig("Assets/" + title.replace(" ", "_") + ".png")
+The code is provided in the separate file \textbf{source.py}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../Assets/Case_1.png}
+    \includegraphics[width=0.4\textwidth]{../Assets/Case_2.png}
+    \includegraphics[width=0.4\textwidth]{../Assets/Case_3.png}
+    \caption{Intersection of lines \( l \) and \( m \)}
+    \label{fig:intersection}
+\end{figure}
+
+In the third case lines 2 and 3 are parallel, so the intersection point is not defined.

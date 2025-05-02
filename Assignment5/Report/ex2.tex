@@ -1,0 +1,35 @@
+We aim to prove:
+\[
+\text{The points } \mathbf{x}, \mathbf{y}, \mathbf{z} \text{ are collinear } \iff \det(M) = 0
+\]
+
+\vspace{0.5em}
+\textbf{($\Rightarrow$) Only If:} \\
+Assume the three points are collinear in projective space $\mathbb{P}^2$. This means they lie on the same line. In projective geometry, three points are collinear if one of them can be expressed as a linear combination of the other two. That is, there exist scalars $\lambda, \mu \in \mathbb{R}$ such that:
+\[
+\mathbf{z} = \lambda \mathbf{x} + \mu \mathbf{y}
+\]
+This implies that the vectors $\mathbf{x}, \mathbf{y}, \mathbf{z}$ are linearly dependent. By a basic result in linear algebra, if the columns of a matrix are linearly dependent, then the determinant of that matrix is zero:
+\[
+\Rightarrow \det(M) = 0
+\]
+
+\vspace{0.5em}
+\textbf{($\Leftarrow$) If:} \\
+Now assume that $\det(M) = 0$. Then the columns of $M$, i.e., the vectors $\mathbf{x}, \mathbf{y}, \mathbf{z}$, are linearly dependent. Therefore, there exist scalars $\alpha, \beta, \gamma$, not all zero, such that:
+\[
+\alpha \mathbf{x} + \beta \mathbf{y} + \gamma \mathbf{z} = \mathbf{0}
+\]
+This means one of the vectors can be written as a linear combination of the other two. For example, if $\gamma \ne 0$, then:
+\[
+\mathbf{z} = -\frac{\alpha}{\gamma} \mathbf{x} - \frac{\beta}{\gamma} \mathbf{y}
+\]
+Thus, the points $\mathbf{x}, \mathbf{y}, \mathbf{z}$ are collinear in projective space.
+
+\vspace{0.5em}
+\textbf{Conclusion:}
+\[
+\boxed{
+\mathbf{x}, \mathbf{y}, \mathbf{z} \text{ are collinear} \iff \det(M) = 0
+}
+\]

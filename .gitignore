@@ -410,3 +410,6 @@ FodyWeavers.xsd
 *.out
 *.synctex.gz
 *.toc
+
+# MacOS Finder files
+.DS_Store

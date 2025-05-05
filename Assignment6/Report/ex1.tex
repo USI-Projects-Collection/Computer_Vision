@@ -1,80 +1,99 @@
-\begin{enumerate}
-  \item \emph{Rewrite as a quadratic form.}  
-    Set
-    \[
-      X = \begin{pmatrix}x\\y\end{pmatrix}, 
-      \quad
-      A = \begin{pmatrix}a & b/2\\[3pt]b/2 & c\end{pmatrix}, 
-      \quad
-      v = \begin{pmatrix}d/2\\[3pt]e/2\end{pmatrix}.
-    \]
-    Then
-    \[
-      a x^2 + bxy + c y^2 + d x + e y + f
-      = X^T A\,X + 2\,v^T X + f,
-    \]
-    and
-    \[
-      C = \begin{pmatrix} A & v \\[3pt] v^T & f \end{pmatrix}
-      \;\Longrightarrow\;
-      \det C = \det A \,\bigl(f - v^T A^{-1}v\bigr).
-    \]
 
-  \item \emph{Definiteness of \(A\).}  
-    Since \(\delta = b^2 - 4ac < 0\), we have
-    \[
-      \det A = ac - \tfrac{b^2}{4} = \frac{4ac - b^2}{4} > 0.
-    \]
-    Moreover \(\operatorname{tr} A = a + c\).  Hence a real symmetric \(2\times2\) matrix with positive determinant has two real eigenvalues of the same sign:
-    \[
-      \begin{cases}
-        a + c > 0 \;\Longrightarrow\;A\text{ is positive‐definite},\\
-        a + c < 0 \;\Longrightarrow\;A\text{ is negative‐definite}.
-      \end{cases}
-    \]
+\subsection*{1. Separate the purely quadratic part}
 
-  \item \emph{Complete the square.}  
-    Define
-    \[
-      Q(X) = X^T A\,X + 2\,v^T X + f.
-    \]
-    Its unique critical point is
-    \[
-      \nabla Q = 2A\,X + 2v = 0
-      \quad\Longrightarrow\quad
-      X_0 = -A^{-1}v.
-    \]
-    Substituting back,
-    \[
-      Q(X) = (X - X_0)^T A\,(X - X_0)
-      \;+\;\underbrace{\bigl(f - v^T A^{-1}v\bigr)}_{S},
-    \]
-    and one checks
-    \(\det C = \det A\cdot S\), so
-    \[
-      S = \frac{\det C}{\det A}.
-    \]
+Write the polynomial in vector form
+\[
+F(x,y)=\underbrace{\begin{bmatrix}x&y\end{bmatrix}
+A\begin{bmatrix}x\\y\end{bmatrix}}_{\text{quadratic}}
+\;+\;
+2g^{\!T}\begin{bmatrix}x\\y\end{bmatrix}+f,
+\qquad
+A=\begin{pmatrix}a&\tfrac{b}{2}\\[2pt]\tfrac{b}{2}&c\end{pmatrix},\;
+g=\frac{1}{2}\begin{bmatrix}d\\ e\end{bmatrix}.
+\]
 
-  \item \emph{Sign analysis and conclusion.}  
-    We know \(\det A>0\).  The hypothesis \((a+c)\det C>0\) forces:
-    \[
-      \begin{cases}
-        a+c>0 \implies \det C>0 \implies S>0
-        &\text{and }A\text{ positive‐definite},\\
-        a+c<0 \implies \det C<0 \implies S<0
-        &\text{and }A\text{ negative‐definite}.
-      \end{cases}
-    \]
-    In the first case,
-    \[
-      Q(X) \;=\;(X-X_0)^T A (X-X_0) + S\;\ge S>0
-      \quad\forall X,
-    \]
-    and in the second,
-    \[
-      Q(X) \;=\;(X-X_0)^T A (X-X_0) + S\;\le S<0
-      \quad\forall X.
-    \]
-    Thus in \emph{either} case \(Q(X)\) never vanishes on \(\mathbf R^2\), so
-    \(\{Q=0\} = \emptyset\).  Hence the conic is \emph{imaginary}. 
-\end{enumerate}
+\subsection*{2. Definiteness of $A$}
+
+Because $\delta=b^{2}-4ac<0$,
+\[
+\det A
+=a\,c-\Bigl(\tfrac{b}{2}\Bigr)^{2}
+=\frac{-\delta}{4}>0.
+\]
+
+A symmetric $2\times2$ matrix with positive determinant is \textbf{definite}; its sign is the sign of its trace:
+\begin{itemize}
+\item If $a+c>0 \Rightarrow A$ is \textbf{positive definite}.
+\item If $a+c<0 \Rightarrow A$ is \textbf{negative definite}.
+\end{itemize}
+
+\subsection*{3. Translate to the centre of the conic}
+
+The gradient of $F$ vanishes at
+\[
+\mathbf{x}_{0}=-A^{-1}g.
+\]
+
+Completing the square gives the standard form
+\[
+F(x,y)=
+(\mathbf{x}-\mathbf{x}_{0})^{\!T}A(\mathbf{x}-\mathbf{x}_{0})
++\Bigl(f-g^{T}A^{-1}g\Bigr).
+\tag{$\star$}
+\]
+
+\subsection*{4. Express the constant term via $\det C$}
+
+For a block matrix
+$C=\begin{pmatrix}A & g \\ g^{T} & f\end{pmatrix}$
+the Schur complement formula gives
+\[
+\boxed{\; \det C =\det A\;\Bigl(f-g^{T}A^{-1}g\Bigr) \;} \quad\Longrightarrow\quad f-g^{T}A^{-1}g=\frac{\det C}{\det A}.
+\]
+
+Insert this into ($\star$):
+\[
+F(x,y)=
+(\mathbf{x}-\mathbf{x}_{0})^{\!T}A(\mathbf{x}-\mathbf{x}_{0})
+\;+\;\frac{\det C}{\det A}.
+\tag{$\star\star$}
+\]
+
+\subsection*{5. Compare the two terms in ($\star\star$)}
+
+Recall
+\begin{itemize}
+\item $\det A>0$ (Step 2),
+\item $A$ is definite with the same sign as $a+c$,
+\item assumption $(a+c)\det C>0$ says $\det C$ \textbf{has the same sign as} $A$.
+\end{itemize}
+
+\subsubsection*{Case 1: $A$ positive definite $(a+c>0)$}
+\begin{itemize}
+\item $\det C>0 \Rightarrow \frac{\det C}{\det A}>0$.
+\item The first term $(\mathbf{x}-\mathbf{x}_{0})^{T}A(\mathbf{x}-\mathbf{x}_{0})$ is \textbf{non-negative}, vanishing only at $\mathbf{x}=\mathbf{x}_{0}$.
+\end{itemize}
+
+Hence $F(x,y)\ge\frac{\det C}{\det A}>0$ for every $(x,y)\in\mathbb{R}^{2}$; the equation $F=0$ has \textbf{no real solution}.
+
+\subsubsection*{Case 2: $A$ negative definite $(a+c<0)$}
+\begin{itemize}
+\item $\det C<0 \Rightarrow \frac{\det C}{\det A}<0$.
+\item The quadratic term is \textbf{non-positive}, again zero only at $\mathbf{x}_{0}$.
+\end{itemize}
+
+Thus $F(x,y)\le\frac{\det C}{\det A}<0$ for all $(x,y)$; the equation $F=0$ is likewise \textbf{unsatisfiable}.
+
+\subsection*{6. Conclusion}
+
+In both cases the sign of the constant term in ($\star\star$) matches the sign of the definite quadratic part, so their sum \textbf{never vanishes} on $\mathbb{R}^{2}$.
+\[
+\boxed{\;
+\mathcal{C}=\varnothing
+\;}
+\]
+
+Therefore the conic determined by $C$ is \emph{imaginary} (has no real points) whenever
+\[
+\delta=b^{2}-4ac<0,\qquad (a+c)\det C>0,\qquad\det C\neq0.
+\]

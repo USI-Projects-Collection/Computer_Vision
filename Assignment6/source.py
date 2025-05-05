@@ -21,9 +21,9 @@ def main():
     # Save the output img
     cv2.imwrite("Images/rectified_output.pgm", B)
     cv2.imshow("Rectified Image", B)
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     cv2.destroyAllWindows()
-    
+    cv2.imwrite("Images/homework6.png", B)
 
 
 if __name__ == "__main__":

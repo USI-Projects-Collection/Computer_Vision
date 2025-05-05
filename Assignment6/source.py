@@ -14,7 +14,7 @@ def main():
     # Compute the homography matrix
     h_matrix, _ = cv2.findHomography(dst_points, src_points)
     # Create an empty output image
-    output_size = (370, 300)
+    output_size = (300, 370)
     # Use the inverse of h and bilinear interpolation img for computing the intensities of the pixels in B.
     B = cv2.warpPerspective(img, h_matrix, output_size, flags=cv2.INTER_LINEAR)
 

@@ -1,0 +1,97 @@
+\textbf{Show that the conic represented by a non‐singular, symmetric matrix}
+\[
+C = \begin{pmatrix}
+a & \tfrac{b}{2} & \tfrac{d}{2} \\[6pt]
+\tfrac{b}{2} & c & \tfrac{e}{2} \\[6pt]
+\tfrac{d}{2} & \tfrac{e}{2} & f
+\end{pmatrix},
+\]
+\text{with } \(\delta = b^2 - 4ac < 0\) and \((a+c)\det C > 0\), \text{is imaginary, i.e.}
+\[
+\bigl\{(x,y)\in\mathbf R^2 : a x^2 + bxy + c y^2 + d x + e y + f = 0 \bigr\}
+\;=\;\emptyset.
+\]
+
+\bigskip
+
+\noindent\textbf{Solution.}
+\begin{enumerate}
+  \item \emph{Rewrite as a quadratic form.}  
+    Set
+    \[
+      X = \begin{pmatrix}x\\y\end{pmatrix}, 
+      \quad
+      A = \begin{pmatrix}a & b/2\\[3pt]b/2 & c\end{pmatrix}, 
+      \quad
+      v = \begin{pmatrix}d/2\\[3pt]e/2\end{pmatrix}.
+    \]
+    Then
+    \[
+      a x^2 + bxy + c y^2 + d x + e y + f
+      = X^T A\,X + 2\,v^T X + f,
+    \]
+    and
+    \[
+      C = \begin{pmatrix} A & v \\[3pt] v^T & f \end{pmatrix}
+      \;\Longrightarrow\;
+      \det C = \det A \,\bigl(f - v^T A^{-1}v\bigr).
+    \]
+
+  \item \emph{Definiteness of \(A\).}  
+    Since \(\delta = b^2 - 4ac < 0\), we have
+    \[
+      \det A = ac - \tfrac{b^2}{4} = \frac{4ac - b^2}{4} > 0.
+    \]
+    Moreover \(\operatorname{tr} A = a + c\).  Hence a real symmetric \(2\times2\) matrix with positive determinant has two real eigenvalues of the same sign:
+    \[
+      \begin{cases}
+        a + c > 0 \;\Longrightarrow\;A\text{ is positive‐definite},\\
+        a + c < 0 \;\Longrightarrow\;A\text{ is negative‐definite}.
+      \end{cases}
+    \]
+
+  \item \emph{Complete the square.}  
+    Define
+    \[
+      Q(X) = X^T A\,X + 2\,v^T X + f.
+    \]
+    Its unique critical point is
+    \[
+      \nabla Q = 2A\,X + 2v = 0
+      \quad\Longrightarrow\quad
+      X_0 = -A^{-1}v.
+    \]
+    Substituting back,
+    \[
+      Q(X) = (X - X_0)^T A\,(X - X_0)
+      \;+\;\underbrace{\bigl(f - v^T A^{-1}v\bigr)}_{S},
+    \]
+    and one checks
+    \(\det C = \det A\cdot S\), so
+    \[
+      S = \frac{\det C}{\det A}.
+    \]
+
+  \item \emph{Sign analysis and conclusion.}  
+    We know \(\det A>0\).  The hypothesis \((a+c)\det C>0\) forces:
+    \[
+      \begin{cases}
+        a+c>0 \implies \det C>0 \implies S>0
+        &\text{and }A\text{ positive‐definite},\\
+        a+c<0 \implies \det C<0 \implies S<0
+        &\text{and }A\text{ negative‐definite}.
+      \end{cases}
+    \]
+    In the first case,
+    \[
+      Q(X) \;=\;(X-X_0)^T A (X-X_0) + S\;\ge S>0
+      \quad\forall X,
+    \]
+    and in the second,
+    \[
+      Q(X) \;=\;(X-X_0)^T A (X-X_0) + S\;\le S<0
+      \quad\forall X.
+    \]
+    Thus in \emph{either} case \(Q(X)\) never vanishes on \(\mathbf R^2\), so
+    \(\{Q=0\} = \emptyset\).  Hence the conic is \emph{imaginary}. 
+\end{enumerate}

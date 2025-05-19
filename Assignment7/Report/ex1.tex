@@ -33,13 +33,17 @@ We manually selected the ten image coordinates $(u_i,v_i)$ corresponding to the 
     9 & 283.0 & 269.0 \\
     10 & 793.0 & 480.0\\
 \end{tabular}
-\caption{Image coordinates for \texttt{house2.png} and \texttt{house2.png}}
+\caption{Image coordinates for \texttt{house1.png} and \texttt{house2.png}}
 \label{tab:imgpts2}
 \end{table}
 
 % 1.2
 \subsection{Projection Matrix Estimation via DLT}
+
 Following the Direct Linear Transform (DLT) algorithm, we assembled the homogeneous system $A\mathbf{p}=0$ from the world coordinates $\mathbf{X}_i$ (given in \texttt{coords.tex}) and the image points. Solving by SVD gave the projection matrices:
+
+Note that although the coefficient matrix $A$ can be of full rank (rank 12), per the assignment instructions we still take the last column of $V$ (corresponding to the smallest singular value) as the solution vector $\mathbf{p}$, ensuring we correctly extract the nullspace direction.
+
 
 \[
 P_1 = \begin{pmatrix}

@@ -1,49 +1,35 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 
-# Load image for processing
+image_pts = []
 
+def click_event(event, x, y, flags, param):
+    if event == cv2.EVENT_LBUTTONDOWN and len(image_pts) < 10:
+        image_pts.append((x, y))
+        print(f"Point {len(image_pts)}: ({x}, {y})")
+        if len(image_pts) == 10:
+            cv2.destroyAllWindows()
+
+# Load your image
 img = cv2.imread('../Assets/house1.png')
+if img is None:
+    raise FileNotFoundError("Could not load house1.png")
 
-# Convert to grayscale and detect edges
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-edges = cv2.Canny(gray, 50, 150, apertureSize=3)
+# Create window and set callback
+cv2.namedWindow('Click 10 points', cv2.WINDOW_AUTOSIZE)
+cv2.setMouseCallback('Click 10 points', click_event)
 
-# Detect lines using Probabilistic Hough Transform
-lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi/180, threshold=100,
-                        minLineLength=100, maxLineGap=10)
+# Display image and collect 10 points
+while True:
+    cv2.imshow('Click 10 points', img)
+    # Small wait to process GUI events
+    key = cv2.waitKey(1) & 0xFF
+    if len(image_pts) >= 10 or key == ord('q'):
+        # Close window and give GUI time to update
+        cv2.destroyAllWindows()
+        cv2.waitKey(1)
+        break
 
-# Function to compute intersection between two lines
-def compute_intersection(line1, line2):
-    x1, y1, x2, y2 = line1
-    x3, y3, x4, y4 = line2
-    denom = (x1 - x2)*(y3 - y4) - (y1 - y2)*(x3 - x4)
-    if denom == 0:
-        return None
-    px = ((x1*y2 - y1*x2)*(x3 - x4) - (x1 - x2)*(x3*y4 - y3*x4)) / denom
-    py = ((x1*y2 - y1*x2)*(y3 - y4) - (y1 - y2)*(x3*y4 - y3*x4)) / denom
-    return int(px), int(py)
-
-# Compute all intersections of detected lines
-intersections = []
-if lines is not None:
-    for i in range(len(lines)):
-        for j in range(i + 1, len(lines)):
-            pt = compute_intersection(lines[i][0], lines[j][0])
-            if pt:
-                x, y = pt
-                # Keep only points within image bounds
-                if 0 <= x < img.shape[1] and 0 <= y < img.shape[0]:
-                    intersections.append((x, y))
-
-# Draw and label intersection points
-for idx, (x, y) in enumerate(intersections, start=1):
-    cv2.circle(img, (x, y), radius=5, color=(0, 0, 255), thickness=-1)
-    cv2.putText(img, str(idx), (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
-                0.5, (0, 255, 0), 1)
-
-# Display annotated image
-plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.axis('off')
-plt.show()
+image_pts = np.array(image_pts, dtype=float)
+print("Selected image points (x, y):")
+print(image_pts)

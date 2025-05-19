@@ -56,6 +56,15 @@ P_2 = \begin{pmatrix}
 \end{pmatrix}.
 \]
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{"../Assets/img1.png"}
+  \includegraphics[width=0.4\textwidth]{"../Assets/img2.png"}
+  \caption{Reprojection of the points using the estimated projection matrices for house1 and house2.}
+  \label{fig:reproj}
+\end{figure}
+
 % 1.3
 \subsection{Intrinsic and Extrinsic Parameter Recovery}
 Decomposing each $P_j$ by RQ decomposition of its left $3\times3$ submatrix yields the intrinsic matrix $K_j$, rotation matrix $R_j$, and camera center $\tilde C_j$. The results are:
